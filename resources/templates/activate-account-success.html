@@ -23,8 +23,8 @@
     <div class="form">
       <h1 class="page_title" th:utext="#{label.form.header.activated}">Activated</h1>
       <div class="alert_wrapper">
-        <p class="alert alert_success">
-          Пароль успешно изменен
+        <p class="alert alert_success" th:utext="#{label.form.account.successfully.activated}">
+          Account successfully activated
         </p>
       </div>
       <a href="" th:href="@{${returnUrlPath}}" class="back" th:text="#{label.form.back.to.login}">
