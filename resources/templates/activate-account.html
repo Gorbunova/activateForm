@@ -25,41 +25,67 @@
       <form method="post" th:action="" th:object="">
         <h1 class="page_title" th:utext="#{label.form.header.activate.account}">Activation</h1>
         
-        <div class="info_wrapper">
+        <div class="info_wrapper" th:if="${org.type == 'person'}">
           <div class="element">
-            <p id="org">ООО “Новая организация”</p>
+            <p>
+              <span th:text="${surname}">Surname</span>
+              <span th:text="${name}">Name</span>
+              <span th:if="${patronymic}" th:text="${patronymic}">Patronymic</span>
+            </p>
+          </div>
+          <div class="element" th:if="${phone}">
+            <label th:utext="#{label.form.account.tel}">Tel</label>
+            <p th:text="${phone}">+7 985 123 45 67</p>
+          </div>
+          <div class="element" th:if="${inn} OR ${snils}">
+            <label>
+              <span th:if="${inn}" th:utext="#{label.form.account.inn}">TIN</span>
+              <span th:if="${inn} AND ${snils}" class="separator">/</span>
+              <span th:if="${snils}" th:utext="#{label.form.account.snils}">SNILS</span>
+            </label>
+            <p>
+              <span th:if="${inn}" th:text="${inn}">12343252356</span>
+              <span th:if="${inn} AND ${snils}" class="separator">/</span>
+              <span th:if="${snils}" th:text="${snils}">123-412-353 56</span>
+            </p>
+          </div>
+        </div>
+        
+        <div class="info_wrapper" th:if="${org.type == 'org'}">
+          <div class="element">
+            <p th:text="${name_short}">ООО “Новая организация”</p>
           </div>
           <div class="element">
             <p>
-              <span id="surname">Surname</span>
-              <span id="name">Name</span>
-              <span id="patronymic">Patronymic</span>
+              <span th:text="${surname}">Surname</span>
+              <span th:text="${name}">Name</span>
+              <span th:if="${patronymic}" th:text="${patronymic}">Patronymic</span>
             </p>
           </div>
-          <div class="element">
+          <div class="element" th:if="${phone}">
             <label th:utext="#{label.form.account.tel}">Tel</label>
-            <p id="phone">+7 985 123 45 67</p>
+            <p th:text="${phone}" id="phone">+7 985 123 45 67</p>
           </div>
-          <div class="element">
-            <label th:utext="#{label.form.account.inn}">TIN</label>
-            <p id="inn">12343252356</p>
+          <div class="element" th:if="${inn}">
+            <label>
+              <span th:utext="#{label.form.account.inn}">TIN</span>
+              <span th:if="${kpp}" class="separator">/</span>
+              <span th:if="${kpp}" th:utext="#{label.form.account.kpp}">TRRC</span>
+            </label>
+            <p>
+              <span th:text="${inn}">12343252356</span>
+              <span th:if="${kpp}" class="separator">/</span>
+              <span th:if="${kpp}" th:text="${kpp}">123456789</span>
+            </p>
           </div>
-          <div class="element">
-            <label th:utext="#{label.form.account.snils}">SNILS</label>
-            <p id="snils">123-412-353 56</p>
-          </div>
-          <div class="element">
-            <label th:utext="#{label.form.account.kpp}">TRRC</label>
-            <p id="kpp">123456789</p>
-          </div>
-          <div class="element">
+          <div class="element" th:if="${ogrn}">
             <label th:utext="#{label.form.account.ogrn}">PSRN</label>
-            <p id="ogrn">123456789123</p>
+            <p th:text="${ogrn}">123456789123</p>
           </div>
         </div>
 
         <div class="alert_wrapper alert_error" th:errors="*{password1}" th:if="${#fields.hasErrors('password1') and #fields.hasErrors('password2')}">
-          <p class="alert alert_error" th:utext="#{label.form.alert.password.should.match}">Alert</p>
+          <p class="alert alert_error" th:utext="#{label.form.alert.password.should.match}"></p>
         </div>
 
         <div class="input_wrapper">

@@ -1,0 +1,37 @@
+<!doctype html>
+<html xmlns:th="http://www.thymeleaf.org" th:lang="${lang}" lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1,shrink-to-fit=no">
+  <title>docuForce</title>
+  <link rel="shortcut icon" th:href="@{/assets/change_password/favicon.ico}" type="image/x-icon">
+  <link rel="stylesheet" type="text/css" media="screen" th:href="@{/assets/change_password/css/main.css}">
+  <script th:src="@{/assets/change_password/js/main.js}"></script>
+</head>
+<body>
+<div class="layout">
+  <div class="brand_container">
+    <div class="brand">
+      <div class="logo_description">
+        <img th:src="@{/assets/change_password/img/logo.svg}" class="logo" alt="docuForce">
+        <p class="description" th:utext="#{label.form.header.workflow}">Digital documents management</p>
+      </div>
+      <p class="copyright">© InfoLogistics LLC. All rights reserved.</p>
+    </div>
+  </div>
+  <div class="form_container">
+    <div class="form">
+      <h1 class="page_title" th:utext="#{label.form.header.activated}">Activated</h1>
+      <div class="alert_wrapper">
+        <p class="alert alert_success">
+          Пароль успешно изменен
+        </p>
+      </div>
+      <a href="" th:href="@{${returnUrlPath}}" class="back" th:text="#{label.form.back.to.login}">
+        Back to Login
+      </a>
+    </div>
+  </div>
+</div>
+</body>
+</html>

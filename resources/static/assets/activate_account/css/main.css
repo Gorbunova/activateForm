@@ -183,6 +183,15 @@ body {
 
 }
 
+.alert_success {
+  padding: 8px;
+  font-size: 16px;
+  line-height: 24px;
+  color: var(--success-500);
+  background: rgba(115, 158, 115, 0.1);
+  margin-top: 8px;
+}
+
 .alert_error {
   padding: 0 8px;
   font-size: 12px;
@@ -333,12 +342,27 @@ body {
 .info_wrapper .element > label {
   font-size: 11px;
   margin-right: 4px;
+  display: flex;
 }
 
 .info_wrapper .element > label::after {
   content: ':';
 }
 
-.info_wrapper .element > p {
+.info_wrapper .element > p, .info_wrapper .element label > p {
   margin: 0;
+}
+
+.info_wrapper .element p > .separator {
+  margin: 0;
+}
+
+.info_wrapper .element label .separator, .info_wrapper .element .separator {
+  margin: 0 4px;
+}
+
+.back {
+  font-size: 13px;
+  line-height: 18px;
+  color: var(--primary-500);
 }
